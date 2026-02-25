@@ -36,13 +36,13 @@ A simple, physics-based, fps controller built for Unity 6.3 LTS.
 - [ ] Surface-based movement
 - [ ] General QoL improvements & fixes (e.g slope handling or slope limiting)
 
-## Demo
-> [!WARNING] 
+## Demo: 
+> [!NOT] 
 Coming soon!
 
-## Design Decisions
-> [!WARNING] 
+## Design Decisions: 
+> [!NOT] 
 More coming soon!
 
-## License
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+## License: 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
