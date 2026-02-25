@@ -26,34 +26,25 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // Fetch our inputs from the new Unity input system
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
 
-        // Could be extended to proper camera system
         playerCamera = Camera.main;
         playerRigidBody = GetComponent<Rigidbody>();
 
-        // Lock our cursor and turn in invisible when in the game
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        // Compute the move vector and store it for the physics step
+
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
         finalMoveVector = transform.forward * moveValue.y + transform.right * moveValue.x;
         grounded = isGrounded();
 
-        // TODO: add wall run
-
-        // TODO: attach to wall + rotate = "gravity boots"
-
-        // Variable for fall off time
         jumpTimer += Time.deltaTime;
 
-        // Toggle jump if button press & on ground
         if (jumpAction.WasPressedThisFrame() && (grounded || jumpTimer < fallOffTime))
         {
             shouldJump = true;
@@ -62,10 +53,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Rotate our player body to match where the camera is looking
+
         transform.eulerAngles = new Vector3(0, playerCamera.transform.eulerAngles.y, 0);
 
-        // Compute more accurate velocity change
         Vector3 velocity = playerRigidBody.linearVelocity;
         Vector3 targetVelocity = finalMoveVector.normalized * moveForce;
         Vector3 appliedVelocity = new Vector3(
